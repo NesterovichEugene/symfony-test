@@ -44,4 +44,16 @@ class ProductRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+
+    public function getFullPrice($id)
+    {
+        $fullPrice = 0;
+        $product = $this->find($id);
+
+        if ($product) {
+            $fullPrice = (int)$product->getPrice() * (int)$product->getQty();
+        }
+
+        return $fullPrice;
+    }
 }
