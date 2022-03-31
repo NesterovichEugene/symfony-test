@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Product;
+use App\Form\Type\QtyType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,8 +15,10 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('price')
-            ->add('qty')
+            ->add('price', MoneyType::class, [
+                'currency' => 'USD'
+            ])
+            ->add('qty', QtyType::class)
         ;
     }
 

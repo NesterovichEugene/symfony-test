@@ -1,0 +1,15 @@
+{% block qty_row %}
+    <div class="form-group">
+        {{ form_label(form) }}
+        <div class="input-group" {{ stimulus_controller('qty') }}>
+            <button type="button"
+                    class="btn btn-outline-secondary qty-minus"
+                    {{ stimulus_action('qty', 'decreaseQty') }}>-</button>
+            {{ form_widget(form, {'attr': {'data-qty-target': 'qty'}}) }}
+            <button type="button"
+                    class="btn btn-outline-secondary qty-plus"
+                    {{ stimulus_action('qty', 'increaseQty') }}>+</button>
+        </div>
+        {{ form_help(form) }}
+    </div>
+{% endblock %}
